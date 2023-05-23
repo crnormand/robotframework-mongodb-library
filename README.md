@@ -1,8 +1,8 @@
-Robotframework-MongoDB-Library 3.3
+Robotframework-MongoDB-Library 4.x
 ==============================
 A library for interacting with MongoDB from RobotFramework.
 
-Uses pymongo.
+Uses pymongo-4.
 
 Update Keywords on 3.3
 -------
