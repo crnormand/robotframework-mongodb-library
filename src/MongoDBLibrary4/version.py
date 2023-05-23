@@ -1,2 +1,2 @@
 # Update this before release
-VERSION = "3.3"
+VERSION = "4.0"

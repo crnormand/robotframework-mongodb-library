@@ -11,7 +11,7 @@ class MongoDBLibrary(MongoConnectionManager, MongoQuery):
 
     References:
     
-     + PyMongo 3.0.3 Documentation - http://api.mongodb.org/python/3.0.3/
+     + PyMongo Documentation - https://pymongo.readthedocs.io/en/stable/api/index.html
      
     Example Usage:
         | Connect To MongoDB | foo.bar.org | ${27017} |

@@ -1,6 +1,6 @@
-bson==0.5.8
-pymongo==3.8.0
-robotframework==3.1.2
+bson>=0.5.8
+pymongo>=4.0.0
+robotframework>=6.0.0
 
 twine>=1.13.0
 setuptools>=41.0.1

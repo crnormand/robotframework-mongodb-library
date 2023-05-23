@@ -7,15 +7,15 @@ import setuptools
 
 import sys, os
 
-sys.path.insert(0, os.path.join('src', 'MongoDBLibrary'))
+sys.path.insert(0, os.path.join('src', 'MongoDBLibrary4'))
 
 from version import VERSION
 
 requirements = [
     'tox>=3.0.0',
     'coverage',
-    'robotframework>=3.0',
-    'pymongo>=3.8.0',
+    'robotframework>=6.0',
+    'pymongo>=4.0.0',
     'bson>=0.5.8'
 ]
 
@@ -33,15 +33,15 @@ Topic :: Software Development :: Testing
 
 
 def main():
-    setuptools.setup(name='robotframework-mongodb-library3',
+    setuptools.setup(name='robotframework-mongodb-library4',
                      version=VERSION,
                      description='Mongo Database utility library for Robot Framework',
                      author='Kittichai Khamdee',
                      author_email='yimwhancafe@hotmail.com',
-                     url='https://github.com/yimwhancafe/robotframework-mongodb-library',
-                     keywords=['mongodb', 'robotframework', 'robotframework-mongodb-library', 'MongoDBLibrary'],
+                     url='https://github.com/crnormand/robotframework-mongodb-library',
+                     keywords=['mongodb', 'robotframework', 'robotframework-mongodb-library4', 'MongoDBLibrary4'],
                      package_dir={'': 'src'},
-                     packages=['MongoDBLibrary'],
+                     packages=['MongoDBLibrary4'],
                      include_package_data=True,
                      install_requires=requirements,
                      zip_safe=False,

@@ -3,11 +3,6 @@ Robotframework-MongoDB-Library 4.x
 A library for interacting with MongoDB from RobotFramework.
 
 Uses pymongo-4.
-
-Update Keywords on 3.3
--------
-- Retrieve All Mongodb Records Limit
-- Retrieve All Mongodb Records Limit Sort
  
 License
 -------
@@ -15,6 +10,7 @@ See LICENSE file for updated license information
 
 Credits
 -------
+- https://github.com/crnormand/robotframework-mongodb-library
 - https://github.com/iPlantCollaborativeOpenSource/Robotframework-MongoDB-Library
 - https://github.com/robotframework-thailand/robotframework-mongodb-library
 
