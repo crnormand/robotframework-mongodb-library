@@ -18,7 +18,7 @@ class MongoQuery(object):
         | Log Many | @{allDBs} |
         | Should Contain | ${allDBs} | DBName |
         """
-        allDBs = self._dbconnection.database_names()
+        allDBs = self._dbconnection.list_database_names()
         logging.debug("| @{allDBs} | Get Mongodb Databases |")
         return allDBs
 
@@ -37,7 +37,7 @@ class MongoQuery(object):
             db = self._dbconnection['%s' % (dbName,)]
         except TypeError:
             self._builtin.fail("Connection failed, please make sure you have run 'Connect To Mongodb' first.")
-        allCollections = db.collection_names()
+        allCollections = db.list_collection_names()
         logging.debug("| @{allCollections} | Get MongoDB Collections | %s |" % dbName)
         return allCollections
 
@@ -110,11 +110,11 @@ class MongoQuery(object):
         except TypeError:
             self._builtin.fail("Connection failed, please make sure you have run 'Connect To Mongodb' first.")
         coll = db['%s' % dbCollName]
-        count = coll.count()
+        count = coll.estimated_document_count()
         logging.debug("| ${allResults} | Get MongoDB Collection Count | %s | %s |" % (dbName, dbCollName))
         return count
 
-    def save_mongodb_records(self, dbName, dbCollName, recordJSON):
+    def save_mongodb_record(self, dbName, dbCollName, recordJSON):
         """
         If to_save already has an "_id" then an update() (upsert) operation is 
         performed and any existing document with that "_id" is overwritten. 
@@ -135,14 +135,16 @@ class MongoQuery(object):
         dbName = str(dbName)
         dbCollName = str(dbCollName)
         recordJSON = dict(json.loads(recordJSON))
-        if '_id' in recordJSON:
-            recordJSON['_id'] = ObjectId(recordJSON['_id'])
         try:
             db = self._dbconnection['%s' % (dbName,)]
         except TypeError:
             self._builtin.fail("Connection failed, please make sure you have run 'Connect To Mongodb' first.")
         coll = db['%s' % dbCollName]
-        allResults = coll.save(recordJSON)
+        if '_id' in recordJSON:
+            recordJSON['_id'] = ObjectId(recordJSON['_id'])
+            allResults = coll.replace_one(recordJSON)
+        else:
+            allResults = coll.insert_one(recordJSON)
         logging.debug("| ${allResults} | Save MongoDB Records | %s | %s | %s |" % (dbName, dbCollName, recordJSON))
         return allResults
 

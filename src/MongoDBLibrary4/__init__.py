@@ -3,7 +3,7 @@ from .mongoquery import MongoQuery
 from .version import VERSION
 
 
-class MongoDBLibrary(MongoConnectionManager, MongoQuery):
+class MongoDBLibrary4(MongoConnectionManager, MongoQuery):
     """
     MongoDB Library contains utilities meant for Robot Framework's usage.
     
